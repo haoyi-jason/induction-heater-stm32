@@ -1,0 +1,30 @@
+# STM32/KiCAD Projects
+
+# IDEs
+.vscode/
+*.launch
+
+# Build Directories
+build/
+bin/
+obj/
+
+# STM32 Utility Files
+*.elf
+*.hex
+*.bin
+*.lst
+*.d
+
+# KiCAD Files
+*.kicad_pcb
+*.kicad_sch
+*.kicad_pro
+
+# Backup Files
+*~
+*.bak
+*.swp
+
+# Logs
+*.log
