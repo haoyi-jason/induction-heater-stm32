@@ -1,26 +1,36 @@
-(kicad_sch (version 20230121)
-  (components
-    (component (ref STM32F103C8T6)
-      (libsource (lib "MCU_ST_STM32F1"))
-      (value "STM32F103C8T6")
-      (footprint (footprint (name "LQFP-48")))))
-  )
-  (net (name "3.3V") (netclass "power") (pin (ref STM32F103C8T6) (pin 1)))
-  (net (name "GND") (netclass "power") (pin (ref STM32F103C8T6) (pin 3)))
-  (net (name "NRST") (pin (ref STM32F103C8T6) (pin 4)))
-  (button (ref BTN_RESET) (position (xyz 10 0 0)) (label "Reset Button") (pin (ref STM32F103C8T6) (pin 4)))
-  (header (ref SWD_HEADER) (position (xyz 15 0 0)) (pins
-    (pin (name "PA13") (net "SWDIO"))
-    (pin (name "PA14") (net "SWCLK"))
-    (pin (name "3V3"))
-    (pin (name "GND"))
-    (pin (name "NRST")))))
-  (header (ref UART_HEADER) (position (xyz 20 0 0)) (pins
-    (pin (name "PA9"))
-    (pin (name "PA10")))))
-  (net (name "PWM_GATE") (pin (ref STM32F103C8T6) (pin 2)))
-  (net (name "TEMP_ADC") (pin (ref STM32F103C8T6) (pin 5)))
-  (net (name "CURRENT_ADC") (pin (ref STM32F103C8T6) (pin 6)))
-  (net (name "FAN_PWM") (pin (ref STM32F103C8T6) (pin 7)))
-  (net (name "STATUS_LED") (pin (ref STM32F103C8T6) (pin 8)))
-)
+$kicad_sch
+$version 1
+$encoding utf-8
+$format 1
+
+
+(lib
+  (symbol (name MCU_ST_STM32F1:STM32F103C8Tx)
+    (property "Device" "STM32F103C8Tx"))
+
+  (power (name +3V3))
+  (power (name GND))
+
+  (capacitor (name C1) (value 100nF))
+  (capacitor (name C2) (value 100nF))
+  (resistor (name R1) (value 10k))
+  (button (name BTN_RESET) (value Reset))
+
+  (header (name SWD_HEADER)
+    (pin (name PA13) (type GPIO))
+    (pin (name PA14) (type GPIO))
+    (pin (name NRST) (type GPIO))
+    (pin (name +3V3) (type POWER))
+    (pin (name GND) (type POWER)))
+
+  (header (name UART_HEADER)
+    (pin (name PA9) (type GPIO))
+    (pin (name PA10) (type GPIO))
+    (pin (name GND) (type POWER)))
+
+  (crystal (name XTAL_HSE)
+    (value 8MHz)
+    (load_capacitor (name CLOAD1))
+    (load_capacitor (name CLOAD2))))
+)  
+$end
